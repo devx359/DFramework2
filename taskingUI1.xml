@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+	<!--  <parameter name="environment" value="itest" />
+	<parameter name="browserType" value="chrome" /> -->
+	<listeners>
+		<listener class-name="Utilities.AnnotationTransformer" />
+	</listeners>
+	<test thread-count="5" name="Test">
+		<parameter name="environment" value="itest" />
+		<parameter name="browserType" value="chrome" />
+		<parameter name="Excelsheet" value="MasterDataSheetUI.xlsx" />
+		<parameter name="sheetName" value="job" />
+
+		<classes>
+			<!--<class name="Tasking_UI.TC_002_Job_list" />-->
+			<class name="Tasking_UI.TC_004_Worktracter"/>
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

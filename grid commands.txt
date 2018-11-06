@@ -1,0 +1,30 @@
+** grid hub
+java -jar D:\selenium_jars\selenium-server-standalone-3.9.1.jar -role hub
+
+*by default hub use port 4444 .For custom port
+java -jar F:\softwares\selenium\SeleniumServer\selenium-server-standalone-3.4.0.jar -role hub
+-port 4441
+
+netstat -a //get list of all used ports
+
+
+***grid node
+
+java -Dwebdriver.chrome.driver=F:\softwares\selenium\chromedriver\chromedriver_236.exe -jar F:\softwares\selenium\SeleniumServer\selenium-server-standalone-3.4.0.jar -role node -hub http://172.16.161.138:4444/grid/register -port 5556 
+
+java -Dwebdriver.chrome.driver=F:\softwares\selenium\chromedriver\chromedriver_236.exe -jar F:\softwares\selenium\SeleniumServer\selenium-server-standalone-3.4.0.jar -role node -hub http://172.16.161.138:4444/grid/register -port 5555 
+
+java -Dwebdriver.chrome.driver=D:\chromedriver236\chromedriver_238.exe -jar D:\selenium_jars\selenium-server-standalone-3.9.1.jar -role node -hub http://10.34.1.206:4444/grid/register -port 5556 -browser browserName=chrome,maxInstances=20,maxSession=20
+*******************MVN issue*******************************************
+if tools.exe is missing set JAVA_HOME="PATH TO JDK C:/JAVA/JDK1.9"
+
+mvn test -DsuiteXmlFile=gridparallel.xml
+
+**********************S**
+office path
+Namita
+java -Dwebdriver.chrome.driver=E:\Setup\chromedriver\chromedriver_236.exe -jar E:\Setup\selenium-server-standalone-3.9.1.jar -role node -hub http://10.33.91.52:4444/grid/register -port 5556
+
+Debapriyo
+java -Dwebdriver.chrome.driver=D:\chromedriver236\chromedriver_236.exe -jar D:\selenium_jars\selenium-server-standalone-3.9.1.jar -role node -hub http://10.33.91.52:4444/grid/register/ -port 5555 
+java -Dwebdriver.chrome.driver=D:\chromedriver236\chromedriver_236.exe -jar D:\selenium_jars\selenium-server-standalone-3.9.1.jar -role node -hub http://10.33.91.52:4444/grid/register/ -port 5556

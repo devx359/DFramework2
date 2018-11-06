@@ -1,0 +1,115 @@
+package tasking;
+
+import java.util.ArrayList;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Map;
+
+import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
+
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.rethinkdb.RethinkDB;
+import com.rethinkdb.net.Connection;
+
+import Utilities.Dbconnection;
+import Utilities.ExtentManager;
+import Utilities.UnixTimeStampConverter;
+import lib.Rethink_query;
+import lib.TaskAdd;
+
+public interface ITasking {
+	ExtentReports reports=null;
+	ExtentTest test=null;
+	ExtentManager ExtentManagerObj=null;
+	WebDriver driver=null;
+	Connection conn=null;
+	RethinkDB r=null;
+	String node_tsk_id = "dummy";
+	String task_code = "dummy";
+	String reques_id = "dummy";
+	String user_code = "dummy";
+	String type = "dummy";
+	String response_status = "Submit";
+	String jobCode = "dummy";
+	String nodewisestatus = "dummy";
+	Rethink_query rethink=null;
+	String next_reques_id = "dummy";
+	String status = "dummy";
+	// change node value for OP and QC here
+	String opNode = "dummy";
+	String nodetype = "dummy";
+	String userCode = "dummy";
+	String password = "dummy";
+	int port=0;
+	int nooftasks=0;
+	Boolean taskfound = false;
+	int qcPercentage = 0;
+	int BatchSize = 0;
+	int opTaskSubmitted = 0;
+	int qcTaskSubmitted = 0;
+	int noOfJobsToBeReady = 0;
+	int totalOpReadyTasks = 0;
+	int bypassedTasks = 0;
+	int qcpercent = 0;
+	int nodeNumber = 0;
+	String distribute_time = null;
+	String ack_time = null;
+	String submit_time = null;
+	String request_time = null;
+	String qcnode = null;
+	TaskAdd taskadd=null;
+	String submit_type = "submit";
+	List<Map<String, String>> listAll = new ArrayList<Map<String, String>>();
+	Map<String, String> mapAll=null;
+	UnixTimeStampConverter unix = new UnixTimeStampConverter();
+	int count = 1;
+	Dbconnection dbcon=null;
+	String token="dummy";
+	Boolean DeleteRethink=false;
+	Boolean DeleteMysql=false;
+	Boolean waitForTaskResponseProcess=false;
+	Boolean active=false;
+	String EngagementCode = null;
+	int Addtask = 0;
+	Boolean DeleteMysqlLog=false;
+	String PrevTestCaseSerial = "empty";
+	String CurrentTestCaseSerial = "empty";
+	Boolean endreport = false;
+	String action="empty";
+	Boolean TaskUploaded = false;
+	Boolean Assert = true;
+	Boolean IsTaskMysqlProccessedState = true;
+	int requeueCount = 1;
+	int reworkCount = 1;
+	int flushCount = 1;
+	int Loadcounter = 0;
+	ArrayList<String> RequeueNodeList = new ArrayList<String>(25);
+	ArrayList<String> ReworkNodeList = new ArrayList<String>(25);
+	ArrayList<String> FlushNodeList = new ArrayList<String>(25);
+	Boolean dontDoAnyAction = false;
+	String job_name="empty";
+	int batch_size=0;
+	// String sheetName=null;
+	TaskAdd tskObj=null;
+	
+	void initialSetup(ITestContext context);
+	void setup(ITestContext context);
+	void doWhatAction();
+	void defaultSteps(Hashtable<String, String> tdata) ;
+	void Assertions(String testCase);
+	void initialDataSetup(Hashtable<String, String> tdata, ITestContext context);
+	void myScript(Hashtable<String, String> tdata, ITestContext context);
+	void login();
+	void login(String usercode1, String password1);
+	void task_request();
+	void task_send_to_operator();
+	void task_submit();
+	void requeue();
+	void rework();
+	void flushByJob();
+	void flushBytask(String action);
+	void teardown();
+
+}

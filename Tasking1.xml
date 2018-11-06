@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="FunctionalTestSuite">
+ <!--  
+	    <test thread-count="1" name="rework_functional">
+		<parameter name="Excelsheet" value="MasterDataSheet.xlsx" />
+		<parameter name="sheetName" value="rework" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="tasking.TC_014_Rework" />
+		</classes>
+	</test> 
+-->	
+	
+	<test thread-count="1" name="requeue_functional">
+		<parameter name="Excelsheet" value="MasterDataSheetAPI.xlsx" />
+		<parameter name="sheetName" value="requeue" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="tasking.TC_012_Requeue" />
+		</classes>
+	</test> 
+	
+ <!-- 
+
+	<test thread-count="1" name="flushByJob_functional">
+		<parameter name="Excelsheet" value="MasterDataSheetAPI.xlsx" />
+		<parameter name="sheetName" value="flushByJob" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="tasking.TC_015_Flush_By_Job" />
+		</classes>
+	</test> 
+  
+	<test thread-count="1" name="flushByJob_functional">
+		<parameter name="Excelsheet" value="MasterDataSheet.xlsx" />
+		<parameter name="sheetName" value="psubmit" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="tasking.TC_016_Psubmit" />
+		</classes>
+	</test> 
+	
+	<test thread-count="1" name="flushByJob_functional">
+		<parameter name="Excelsheet" value="MasterDataSheet.xlsx" />
+		<parameter name="sheetName" value="resetByJob" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="tasking.TC_017_ResetByJob" />
+		</classes>
+	</test> 
+	
+	<test thread-count="1" name="flushByJob2_functional">
+		<parameter name="Excelsheet" value="MasterDataSheetAPI.xlsx" />
+		<parameter name="sheetName" value="flushByJob" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="tasking.Test1" />
+		</classes>
+	</test> -->
+</suite> <!-- Suite -->

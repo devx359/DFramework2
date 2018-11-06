@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="FunctionalTestSuite">
+	<!-- <test thread-count="5" name="rework_functional">
+		<parameter name="Excelsheet" value="VarQC.xlsx" />
+		<parameter name="sheetName" value="rework" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="tasking.TC_013_Rework" />
+		</classes>
+	</test> -->
+	<!--<test thread-count="5" name="requeue_functional">
+		<parameter name="Excelsheet" value="MasterDataSheet1.xlsx" />
+		<parameter name="sheetName" value="requeue" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="tasking.TC_012_Requeue" />
+		</classes>
+	</test> -->
+	
+	<test thread-count="5" name="flushtask_functional">
+		<parameter name="Excelsheet" value="MasterDataSheet1.xlsx" />
+		<parameter name="sheetName" value="flushtask" />
+		<parameter name="environment" value="itest" />
+		<classes>
+		<class name="tasking.TC_013_flushtask" />
+		</classes>
+	</test>   
+	
+</suite> <!-- Suite -->

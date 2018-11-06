@@ -1,0 +1,30 @@
+/target/
+DFramework/faltutestng.xml
+/.classpath
+/.project
+/.settings/
+/test-output/
+Reports/
+test-output/
+.classpath
+bin/
+
+TestData/MasterDataSheet.xlsx
+TestData/googleCreds.json
+DFramework/TestData/googleCreds.json
+
+TestData/~$MasterDataSheet.xlsx
+src/test/java/tasking/Test1.java
+TestData/MasterDataSheet1.xlsx
+TestData/Testreport.xml
+TestData/tasking.xml
+TestData/~$MasterDataSheet1.xlsx
+TestData/~$MasterDataSheetUI.xlsx
+myreport.html
+src/test/java/UI_Functions/Tstgoogle.java
+src/test/java/tasking/MainClass_FB.java
+"\357\200\233[A\357\200\233"
+        "\357\200\233[A\357\200\233.pub"
+        "\357\200\233[A\357\200\233[Bimeritssh"
+        "\357\200\233[A\357\200\233[Bimeritssh.pub"
+

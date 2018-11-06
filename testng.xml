@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Default suite">
+  <test thread-count="5" name="UI_functional">
+		<parameter name="Excelsheet" value="MasterDataSheetUI.xlsx" />
+		<parameter name="sheetName" value="job" />
+		<parameter name="environment" value="itest" />
+		<parameter name="browserType" value="chrome" />
+    <classes>
+         <class name="Tasking_UI.TC_002_Worktracter" />
+     <!--  <class name="Testcase.ProjectCreation"></class>-->
+     <!-- <class name="Testcase.FeeCollection"></class>-->
+    </classes>
+  </test> <!-- Default test -->
+</suite> <!-- Default suite -->

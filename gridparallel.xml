@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests" thread-count="10">
+
+	<test name="Test1">
+		<parameter name="RowNum" value="1" />
+	 	<parameter name="environment" value="itest" /> 
+		<classes>
+			<class name="uiTestCases.Grid" />
+		</classes>
+	</test>
+
+	<test name="Test2">
+		<parameter name="RowNum" value="2" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="uiTestCases.Grid" />
+		</classes>
+	</test>
+<!-- 	
+	<test name="Test3">
+		<parameter name="node" value="nodeA" />
+		<parameter name="Excelsheet" value="grid1.xlsx" />
+		<parameter name="sheetName" value="Sheet1" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="uiTestCases.Grid" />
+		</classes>
+	</test>
+	<test name="Test4">
+		<parameter name="node" value="nodeA" />
+		<parameter name="Excelsheet" value="grid1.xlsx" />
+		<parameter name="sheetName" value="Sheet1" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="uiTestCases.Grid" />
+		</classes>
+	</test>
+	<test name="Test5">
+		<parameter name="node" value="nodeA" />
+		<parameter name="Excelsheet" value="grid1.xlsx" />
+		<parameter name="sheetName" value="Sheet1" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="uiTestCases.Grid" />
+		</classes>
+	</test>
+	<test name="Test6">
+		<parameter name="node" value="nodeA" />
+		<parameter name="Excelsheet" value="grid1.xlsx" />
+		<parameter name="sheetName" value="Sheet1" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="uiTestCases.Grid" />
+		</classes>
+	</test>
+	<test name="Test7">
+		<parameter name="node" value="nodeA" />
+		<parameter name="Excelsheet" value="grid1.xlsx" />
+		<parameter name="sheetName" value="Sheet1" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="uiTestCases.Grid" />
+		</classes>
+	</test>
+	<test name="Test8">
+		<parameter name="node" value="nodeA" />
+		<parameter name="Excelsheet" value="grid1.xlsx" />
+		<parameter name="sheetName" value="Sheet1" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="uiTestCases.Grid" />
+		</classes>
+	</test>
+	<test name="Test9">
+		<parameter name="node" value="nodeA" />
+		<parameter name="Excelsheet" value="grid1.xlsx" />
+		<parameter name="sheetName" value="Sheet1" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="uiTestCases.Grid" />
+		</classes>
+	</test>
+	<test name="Test10">
+		<parameter name="node" value="nodeA" />
+		<parameter name="Excelsheet" value="grid1.xlsx" />
+		<parameter name="sheetName" value="Sheet1" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="uiTestCases.Grid" />
+		</classes>
+	</test>
+	<test name="Test11">
+		<parameter name="node" value="nodeA" />
+		<parameter name="Excelsheet" value="grid1.xlsx" />
+		<parameter name="sheetName" value="Sheet1" />
+		<parameter name="environment" value="itest" />
+		<classes>
+			<class name="uiTestCases.Grid" />
+		</classes>
+	</test> --> 
+</suite> 

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="MyParalleSuite6" parallel="tests">
+  <test name="Test6">
+    <parameter name="environment" value="itest"/>
+    <parameter name="RowNum" value="6"/>
+    <classes>
+      <class name="uiTestCases.Grid"/>
+    </classes>
+  </test> <!-- Test6 -->
+  <test name="Test7">
+    <parameter name="environment" value="itest"/>
+    <parameter name="RowNum" value="7"/>
+    <classes>
+      <class name="uiTestCases.Grid"/>
+    </classes>
+  </test> <!-- Test7 -->
+  <test name="Test8">
+    <parameter name="environment" value="itest"/>
+    <parameter name="RowNum" value="8"/>
+    <classes>
+      <class name="uiTestCases.Grid"/>
+    </classes>
+  </test> <!-- Test8 -->
+  <test name="Test9">
+    <parameter name="environment" value="itest"/>
+    <parameter name="RowNum" value="9"/>
+    <classes>
+      <class name="uiTestCases.Grid"/>
+    </classes>
+  </test> <!-- Test9 -->
+  <test name="Test10">
+    <parameter name="environment" value="itest"/>
+    <parameter name="RowNum" value="10"/>
+    <classes>
+      <class name="uiTestCases.Grid"/>
+    </classes>
+  </test> <!-- Test10 -->
+</suite> <!-- MyParalleSuite6 -->
