@@ -95,7 +95,7 @@ public class OtherFunctions {
 		try
 		{
 			By buttonLocator = Locator.getWebElement(strXpath);
-			WebDriverWait wait = new WebDriverWait(driver, 30);
+			WebDriverWait wait = new WebDriverWait(driver, 40);
 			wait.until(ExpectedConditions.presenceOfElementLocated(buttonLocator));
 			WebElement frame =driver.findElement(buttonLocator);
 		    driver.switchTo().frame(frame); 

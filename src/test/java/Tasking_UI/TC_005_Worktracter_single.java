@@ -95,7 +95,7 @@ public class TC_005_Worktracter_single extends UIBaseClass {
 				WebElement annotations2 = waits2.until(
 						ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[name()='svg']//*[name()='image'][@style='display: block;']")));
 
-				annotation.annotation_poly_rndm(annotations2);
+				annotation.annotation_poly_rndm(annotations2,2);
 				keyboardfunct.keyPressed("annotatedLoc", "E");
 				Thread.sleep(15000);
 				link.JSClick("Tool_nextButton");

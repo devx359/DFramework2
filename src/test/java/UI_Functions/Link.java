@@ -61,6 +61,21 @@ public class Link {
 		}
 
 	}
+	public void ClickonPresent(String strxpath) {
+		try {
+			ngDriver.waitForAngularRequestsToFinish();
+			
+			By LinkLocator = Locator.getWebElement(strxpath);
+			WebDriverWait wait = new WebDriverWait(driver, 10);
+			
+			wait.until(ExpectedConditions.presenceOfElementLocated(LinkLocator)).click();
+		} catch (Exception e) {
+			System.out.println("Unable to click on link: " + strxpath +" "+e);
+			
+			Assert.fail();
+		}
+
+	}
 
 	public void JSClick(String strxpath) {
 		try {
@@ -108,7 +123,7 @@ public class Link {
 			String locatorValue = strXpath1.split(";")[1];
 			
 			String strxpath = locatorValue + dynamicdata + "')]";
-			System.out.println(strxpath);
+			//System.out.println(strxpath);
 			WebElement elementToClick = driver.findElement(By.xpath(strxpath));
 			//WebDriverWait wait = new WebDriverWait(driver, 30);
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
@@ -164,14 +179,19 @@ public class Link {
 
 	}
 
-	public void isPresent(String strxpath) {
+	public boolean isPresent(String strxpath) {
+		boolean res=false;
 		try {
 			By LinkLocator = Locator.getWebElement(strxpath);
-			WebDriverWait wait = new WebDriverWait(driver, 10);
+			WebDriverWait wait = new WebDriverWait(driver, 20);
 			wait.until(ExpectedConditions.presenceOfElementLocated(LinkLocator));
+			res=true;
 		} catch (Exception e) {
-			System.out.println("Link is not present " + strxpath);
+			System.out.println(strxpath+" is not present " +e);
+		//	e.printStackTrace();
+			return res;
 		}
+		return res;
 
 	}
 

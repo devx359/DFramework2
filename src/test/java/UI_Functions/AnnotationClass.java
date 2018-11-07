@@ -28,7 +28,7 @@ public class AnnotationClass {
 		this.ngDriver=ngDriver;
 	}
 	
-	public void annotation_poly_rndm(WebElement AnnotatedPath) {
+	public void annotation_poly_rndm(WebElement AnnotatedPath,int variation) {
 		try {
 			 scrn = new Screen();
 			Actions act = new Actions(driver);				
@@ -37,15 +37,15 @@ public class AnnotationClass {
                     Point p=AnnotatedPath.getLocation();
 					int x=p.getX();
 					int y=p.getY();
-					System.out.println("X"+x+"Y"+y);
-					System.out.println("Sleep before annotation");
+					//System.out.println("X"+x+"Y"+y);
+					//System.out.println("Sleep before annotation");
 					Thread.sleep(3000);
 					//scrn.
 				/*	act.moveToElement(AnnotatedPath,x+80, y+100).click().build().perform();
 					act.moveToElement(AnnotatedPath,x+90, y+80).click().build().perform();
 					act.moveToElement(AnnotatedPath,x+100, y+180).click().build().perform();*/
 					
-					for(int i=150;i<200;i=i+5) {
+					for(int i=(150+variation);i<(200+variation);i=i+5) {
 					
 						act.moveToElement(AnnotatedPath,i,i).click().build().perform();
 						act.moveToElement(AnnotatedPath,i+1,i).click().build().perform();
@@ -53,23 +53,26 @@ public class AnnotationClass {
 					}
 					
 					
-					for(int i=200,j=200;i>150 && j<250;i=i-5,j=j+5) {
+					for(int i=(200+variation),j=200+variation;i>(150+variation) && j<250+variation;i=i-5,j=j+5) {
 					
 						act.moveToElement(AnnotatedPath,i,j).click().build().perform();	
 						act.moveToElement(AnnotatedPath,i-5,j).click().build().perform();	
 					}
 					
-					for(int i=150,j=250;i>100 && j>200;i=i-5,j=j-5) {
+					for(int i=(150+variation),j=(250+variation);i>(100+variation) && j>(200+variation);i=i-5,j=j-5) {
 					
 						act.moveToElement(AnnotatedPath,i,j).click().build().perform();
 						act.moveToElement(AnnotatedPath,i-1,j).click().build().perform();
 					}
 					
-					for(int i=100,j=200;i<150 && j>150;i=i+5,j=j-5) {
+					for(int i=(100+variation),j=(200+variation);i<(150+variation) && j>(150+variation);i=i+5,j=j-5) {
 					
 						act.moveToElement(AnnotatedPath,i,j).click().build().perform();
 						act.moveToElement(AnnotatedPath,i,j-1).click().build().perform();
 					}
+					
+				
+	
 					
 	/*				
 					Actions act1 ;
@@ -116,7 +119,7 @@ public class AnnotationClass {
 						
 					
 					
-					System.out.println("Annotation done");
+					
 					//System.out.println("Sleep after annotation");
 				
 			}

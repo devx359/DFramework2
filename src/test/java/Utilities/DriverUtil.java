@@ -2,6 +2,7 @@ package Utilities;
 
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -9,6 +10,8 @@ import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -64,7 +67,8 @@ public class DriverUtil {
 			if (browser.equalsIgnoreCase("Chrome")) {
 				//System.setProperty("webdriver.chrome.driver", "F:\\softwares\\selenium\\chromedriver_1.exe");
 				System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver_243.exe");
-				
+				//System.setProperty("webdriver.chrome.silentOutput", "true"); //Disables chrome diagnostic logs
+				java.util.logging.Logger.getLogger("org.openqa.selenium").setLevel(Level.WARNING);//disables selenium logs
 				driver = new ChromeDriver();
 				driver.manage().window().maximize();
 		 		driver.manage().timeouts().pageLoadTimeout(45, TimeUnit.SECONDS);

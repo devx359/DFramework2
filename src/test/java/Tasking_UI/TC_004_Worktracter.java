@@ -95,7 +95,7 @@ public class TC_004_Worktracter extends UIBaseClass {
 				WebElement annotations2 = waits2.until(
 						ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[name()='svg']//*[name()='image'][@style='display: block;']")));
 
-				annotation.annotation_poly_rndm(annotations2);
+				annotation.annotation_poly_rndm(annotations2,2);
 				keyboardfunct.keyPressed("annotatedLoc", "E");
 				Thread.sleep(5000);
 				link.JSClick("Tool_nextButton");
@@ -109,7 +109,7 @@ public class TC_004_Worktracter extends UIBaseClass {
 			WebDriverWait waits2 = new WebDriverWait(driver, 30);
 			WebElement annotations2 = waits2.until(
 					ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[name()='svg']//*[name()='image'][@style='display: block;']")));
-			annotation.annotation_poly_rndm(annotations2);
+			annotation.annotation_poly_rndm(annotations2,2);
 			link.JSClick("tool_submit");
 			if(label.isPresent("tool_submit_alert")==true)
 			{

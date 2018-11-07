@@ -1,5 +1,7 @@
 package Tasking_UI;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 
@@ -63,16 +65,28 @@ public class Integration1 {
 	String flowName;
 	String jobName;
 	String testCaseNo;
+	String framecount;
 	int numberOfFrames;
+	String noOfTasks;
+	String nodetype;
 
 	@BeforeTest
-	public void setup(ITestContext context) {
+	public void setup(ITestContext context) throws MalformedURLException {
 		path = new PathUtility(context);
 		scrn = new Screen();// Sikuli Obj
-		/*ExtentManagerObj = new ExtentManager();
-		reports = ExtentManagerObj.GetExtent(this.getClass().getSimpleName().toString());*/
+		/*
+		 * ExtentManagerObj = new ExtentManager(); reports =
+		 * ExtentManagerObj.GetExtent(this.getClass().getSimpleName().toString());
+		 */
 		DrvUtil = new DriverUtil();
 		driver = DrvUtil.DriverSetup("chrome");
+
+		// ******************GRID SETUP**********************
+		/*
+		 * String Node = "http://10.34.1.206:4444/wd/hub"; DesiredCapabilities cap =
+		 * DesiredCapabilities.chrome(); cap.setBrowserName("chrome"); driver = new
+		 * RemoteWebDriver(new URL(Node), cap);
+		 */
 		ngDriver = DrvUtil.getngDriver();
 
 		keyboardfunct = new KeyboardFunction(driver);
@@ -95,8 +109,6 @@ public class Integration1 {
 	public void login(ITestContext context) {
 		try {
 
-			
-
 			// Fetch Excel data sheet Row Number from testng xml parameters
 			String row = context.getCurrentXmlTest().getParameter("RowNum");
 			username = excelUtil.getExcelStringData(Integer.parseInt(row), 0, "job");
@@ -104,23 +116,20 @@ public class Integration1 {
 			flowName = excelUtil.getExcelStringData(Integer.parseInt(row), 9, "job");
 			jobName = excelUtil.getExcelStringData(Integer.parseInt(row), 10, "job");
 			testCaseNo = excelUtil.getExcelStringData(Integer.parseInt(row), 2, "job");
-			
-		//	test = reports.createTest(testCaseNo);
+			framecount = excelUtil.getExcelStringData(Integer.parseInt(row), 12, "job");
+			noOfTasks = excelUtil.getExcelStringData(Integer.parseInt(row), 13, "job");
+			nodetype = excelUtil.getExcelStringData(Integer.parseInt(row), 14, "job");
+			// test = reports.createTest(testCaseNo);
 			context.setAttribute("testobj", test);
 
-			// ******************GRID SETUP**********************
-			String Node = "http://10.34.1.206:4444/wd/hub";
-			DesiredCapabilities cap = DesiredCapabilities.chrome();
-			cap.setBrowserName("chrome");
 			// cap.setPlatform(Platform.WIN10);*/
 			// cap.setVersion("64");
 			// cap.setCapability("applicationName", appname);
-			// driver = new RemoteWebDriver(new URL(Node), cap);
 
 			driver.manage().deleteAllCookies();
 			driver.manage().window().maximize();
 			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-	
+
 			// ******************TEST STRATS************************
 
 			driver.navigate().to("https://itest.imerit.net/");
@@ -132,7 +141,7 @@ public class Integration1 {
 			textbox.SetText("login_password", "I0001I0001");
 			button.Click("login_button");
 
-			System.out.println("Logged in to IMPP : "+username);
+			System.out.println("Logged in to IMPP : " + username);
 
 		} catch (Exception e) {
 
@@ -146,10 +155,15 @@ public class Integration1 {
 	public void TC_2(ITestContext context) {
 		int nooftask;
 		try {
-			nooftask=Integer.parseInt(System.getProperty("tasks")); //How many tasks to do ?		
-			numberOfFrames=Integer.parseInt(System.getProperty("numberOfFrames"));//How many frames this task has ?
-			/*nooftask = 3;
-			numberOfFrames=10;*/
+			/*
+			 * nooftask = Integer.parseInt(System.getProperty("tasks")); // How many tasks
+			 * to do ? numberOfFrames =
+			 * Integer.parseInt(System.getProperty("numberOfFrames"));// How many frames
+			 * this task has ?
+			 */
+			nooftask = Integer.parseInt(noOfTasks);
+			numberOfFrames = Integer.parseInt(framecount);
+
 			int j = 0;
 
 			link.Click("hambugMenu");
@@ -161,7 +175,12 @@ public class Integration1 {
 			link.XpathDataClick("itest_flow", flowName);
 			Thread.sleep(5000);
 			dropdown.SelectValue("itest_job", jobName);
-			link.Click("op_start");
+			System.out.println(nodetype);
+			if (nodetype.equals("op")) {
+				link.Click("op_start");
+			} else {
+				link.Click("qc_start");
+			}
 			Thread.sleep(2000);
 
 			// ************Tasking starts*********************
@@ -170,65 +189,79 @@ public class Integration1 {
 
 			for (int k = 1; k <= nooftask; k++) {
 
-				System.out.println("*********Task "+k+" starts****** for "+username+" : "+jobName);
+				System.out.println("*********Task " + k + " starts****** for " + username + " : " + jobName);
 				WebDriverWait waits = new WebDriverWait(driver, 40);
 				waits.until(ExpectedConditions.visibilityOfElementLocated(
 						By.xpath("//*[name()='svg']//*[name()='image'][@style='display: block;']")));
-
-				Pattern running = new Pattern("./image/poly2");
-				Match p = scrn.wait(running, 30);
-				p.click();
-
+				/*
+				 * Pattern running = new Pattern("./image/poly2"); Match p = scrn.wait(running,
+				 * 30); p.click();
+				 */
+				link.Click("button_polygon");
+				// *************psubmit starts******************
 				for (int i = 1; i <= numberOfFrames; i++) {
-					System.out.println("image webdriver wait.."+" : "+username);
+					System.out.println("image webdriver wait.." + " : " + username);
 					WebDriverWait waits2 = new WebDriverWait(driver, 30);
 					WebElement annotations2 = waits2.until(ExpectedConditions.visibilityOfElementLocated(
 							By.xpath("//*[name()='svg']//*[name()='image'][@style='display: block;']")));
-
-					annotation.annotation_poly_rndm(annotations2);
-					keyboardfunct.keyPressed("annotatedLoc", "E");
-					System.out.println("Sleep after pressing E.."+" : "+username);
-					Thread.sleep(3000);
-					if(i!=10)
-					{
-					link.JSClick("Tool_nextButton");
-					System.out.println("Submitted task for frame: " + i);
-					//test.info("Submitted task for frame: " + i+" : "+username);
-					System.out.println("Sleep after next button..");
-					Thread.sleep(10000);
+					for (int m = 0; m < 100; m = m + 20) {
+						System.out.println("Sleep before annotation" + " : " + username);
+						annotation.annotation_poly_rndm(annotations2, m);
+						keyboardfunct.keyPressed("annotatedLoc", "E");
+						System.out.println("--Annotation done" + " : " + username);
 					}
-										
-					
+					System.out.println("Sleep 2sec after pressing E" + " : " + username);
+					Thread.sleep(2000);
+					if ((i != 10) && (numberOfFrames != 1)) {
+						link.JSClick("Tool_nextButton");
+						System.out.println("Submitted task for frame: " + i + " : " + username);
+						// test.info("Submitted task for frame: " + i+" : "+username);
+						System.out.println("Sleep after next button.." + " : " + username);
+						Thread.sleep(6000);
+					}
+
 				}
-				System.out.println("Sleeping 10 sec before final submit .."+" : "+username);
+				// **************final submit********************
+				System.out.println("Sleeping 10 sec before final submit .." + " : " + username);
 				Thread.sleep(10000);
 				link.JSClick("tool_submit");
-				
-				Pattern sync = new Pattern("./image/submit_sync.png");
-				Match p2 = scrn.wait(sync, 5);
-				while(p2.exists(sync,5)!=null)
-				{
-					Pattern syncok = new Pattern("./image/submit_sync_ok.png");
-					Match p3 = scrn.wait(syncok, 5);
-					p3.click();
-					Thread.sleep(5000);
-					link.JSClick("tool_submit");					
+				Thread.sleep(2000);
+				if (numberOfFrames > 1) {
+					while (link.isPresent("proj_constraint_alert") == true) {
+						System.out.println("Found proj constraint alrt before final submit " + " : " + username);
+						link.ClickonPresent("button_proj_constraint_alert_OK");
+						System.out.println("proj constraint clicked OK and sleep .. " + " : " + username);
+						Thread.sleep(5000);
+						link.JSClick("tool_submit");
+						Thread.sleep(5000);
+
+					}
 				}
-				System.out.println("**Final submit*** "+" : "+username);
-				
-				
+				/*
+				 * else { System.out.println("no final submit alert found" + " : " + username);
+				 * }
+				 */
+
+				/*
+				 * Pattern sync = new Pattern("./image/submit_sync.png"); Match p2 =
+				 * scrn.wait(sync, 5); while (p2.exists(sync, 5) != null) { Pattern syncok = new
+				 * Pattern("./image/submit_sync_ok.png"); Match p3 = scrn.wait(syncok, 5);
+				 * p3.click(); Thread.sleep(5000); link.JSClick("tool_submit"); }
+				 */
+				System.out.println("===========Final submit===========" + " : " + username);
+				Thread.sleep(10000);
 			}
-			System.out.println("Successfully completed task" +" : "+username);
-			//test.pass("Successfully completed task"+" : "+username);
+			System.out.println("Successfully completed task" + " : " + username);
+			// test.pass("Successfully completed task"+" : "+username);
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
-			//test.fail("Failed to enter tasking page");
+			// test.fail("Failed to enter tasking page");
 
 		}
 
-		reports.flush();
+		// reports.flush();
 		driver.quit();
 	}
 
