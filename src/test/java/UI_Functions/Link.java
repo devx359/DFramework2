@@ -51,7 +51,7 @@ public class Link {
 			ngDriver.waitForAngularRequestsToFinish();
 			
 			By LinkLocator = Locator.getWebElement(strxpath);
-			WebDriverWait wait = new WebDriverWait(driver, 30);
+			WebDriverWait wait = new WebDriverWait(driver, 40);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(LinkLocator));
 			wait.until(ExpectedConditions.elementToBeClickable(LinkLocator)).click();
 		} catch (Exception e) {

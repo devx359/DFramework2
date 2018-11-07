@@ -61,6 +61,7 @@ public class Integration1 {
 	String flowName;
 	String jobName;
 	String testCaseNo;
+	int numberOfFrames;
 
 	@BeforeTest
 	public void setup(ITestContext context) {
@@ -129,7 +130,7 @@ public class Integration1 {
 			textbox.SetText("login_password", "I0001I0001");
 			button.Click("login_button");
 
-			System.out.println("Logged in to IMPP");
+			System.out.println("Logged in to IMPP : "+username);
 
 		} catch (Exception e) {
 
@@ -143,8 +144,9 @@ public class Integration1 {
 	public void TC_2(ITestContext context) {
 		int nooftask;
 		try {
-			// nooftask=Integer.parseInt(System.getProperty("tasks"));
-			nooftask = 3;
+			nooftask=Integer.parseInt(System.getProperty("tasks")); //How many tasks to do ?
+			//nooftask = 3;
+			numberOfFrames=Integer.parseInt(System.getProperty("numberOfFrames"));//How many frames this task has ?
 			int j = 0;
 
 			link.Click("hambugMenu");
@@ -163,8 +165,9 @@ public class Integration1 {
 
 			otherFunctions.switchFrame("tool_area");
 
-			for (int k = 1; k < nooftask; k++) {
+			for (int k = 1; k <= nooftask; k++) {
 
+				System.out.println("*********Task "+k+" starts****** for "+username+" : "+jobName);
 				WebDriverWait waits = new WebDriverWait(driver, 40);
 				waits.until(ExpectedConditions.visibilityOfElementLocated(
 						By.xpath("//*[name()='svg']//*[name()='image'][@style='display: block;']")));
@@ -173,7 +176,7 @@ public class Integration1 {
 				Match p = scrn.wait(running, 30);
 				p.click();
 
-				for (int i = 1; i <= 10; i++) {
+				for (int i = 1; i <= numberOfFrames; i++) {
 					System.out.println("image webdriver wait..");
 					WebDriverWait waits2 = new WebDriverWait(driver, 30);
 					WebElement annotations2 = waits2.until(ExpectedConditions.visibilityOfElementLocated(
@@ -206,22 +209,11 @@ public class Integration1 {
 					Match p3 = scrn.wait(syncok, 5);
 					p3.click();
 					Thread.sleep(5000);
-					link.JSClick("tool_submit");
-					System.out.println("Final submit ");
-					
+					link.JSClick("tool_submit");					
 				}
+				System.out.println("**Final submit*** ");
 				
 				
-				/* if (label.isPresent("proj_constraint_alert") == true) {
-				  link.JSClick("button_proj_constraint_alert_OK"); 
-				  System.out.println("Sleeping before final submit ..");
-				  Thread.sleep(3000);
-				  link.JSClick("tool_submit");
-				  
-				}*/
-				 
-
-				//Thread.sleep(5000);
 			}
 			System.out.println("Successfully completed task");
 			test.pass("Successfully completed task");
