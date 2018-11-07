@@ -193,7 +193,7 @@ public class Integration1 {
 					{
 					link.JSClick("Tool_nextButton");
 					System.out.println("Submitted task for frame: " + i);
-					test.info("Submitted task for frame: " + i+" : "+username);
+					//test.info("Submitted task for frame: " + i+" : "+username);
 					System.out.println("Sleep after next button..");
 					Thread.sleep(10000);
 					}
@@ -219,12 +219,12 @@ public class Integration1 {
 				
 			}
 			System.out.println("Successfully completed task" +" : "+username);
-			test.pass("Successfully completed task"+" : "+username);
+			//test.pass("Successfully completed task"+" : "+username);
 
 		} catch (Exception e) {
 
 			e.printStackTrace();
-			test.fail("Failed to enter tasking page");
+			//test.fail("Failed to enter tasking page");
 
 		}
 
