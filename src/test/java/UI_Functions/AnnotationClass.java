@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.sikuli.script.Screen;
 
 import com.paulhammant.ngwebdriver.NgWebDriver;
 
@@ -19,6 +20,7 @@ public class AnnotationClass {
 
 	WebDriver driver;
 	NgWebDriver ngDriver;
+	Screen scrn;
 	
 	public AnnotationClass(WebDriver driver, NgWebDriver ngDriver)
 	{
@@ -28,7 +30,7 @@ public class AnnotationClass {
 	
 	public void annotation_poly_rndm(WebElement AnnotatedPath) {
 		try {
-			
+			 scrn = new Screen();
 			Actions act = new Actions(driver);				
 			{
 				
@@ -36,23 +38,55 @@ public class AnnotationClass {
 					int x=p.getX();
 					int y=p.getY();
 					System.out.println("X"+x+"Y"+y);
-					act.moveToElement(AnnotatedPath,x+80, y+100).click().build().perform();
+					System.out.println("Sleep before annotation");
+					Thread.sleep(3000);
+					//scrn.
+				/*	act.moveToElement(AnnotatedPath,x+80, y+100).click().build().perform();
 					act.moveToElement(AnnotatedPath,x+90, y+80).click().build().perform();
-					act.moveToElement(AnnotatedPath,x+100, y+180).click().build().perform();
-					System.out.println("Annotation done");
+					act.moveToElement(AnnotatedPath,x+100, y+180).click().build().perform();*/
 					
-					Thread.sleep(10000);
+					for(int i=150;i<200;i=i+5) {
+					//	Actions act = new Actions(driver);
+						act.moveToElement(AnnotatedPath,i,i).click().build().perform();
+						act.moveToElement(AnnotatedPath,i+1,i).click().build().perform();
+						
+					}
+					
+					
+					for(int i=200,j=200;i>150 && j<250;i=i-5,j=j+5) {
+					//	Actions act = new Actions(driver);
+						act.moveToElement(AnnotatedPath,i,j).click().build().perform();	
+						act.moveToElement(AnnotatedPath,i-5,j).click().build().perform();	
+					}
+					
+					for(int i=150,j=250;i>100 && j>200;i=i-5,j=j-5) {
+					//	Actions act = new Actions(driver);
+						act.moveToElement(AnnotatedPath,i,j).click().build().perform();
+						act.moveToElement(AnnotatedPath,i-1,j).click().build().perform();
+					}
+					
+					for(int i=100,j=200;i<150 && j>150;i=i+5,j=j-5) {
+					//	Actions act = new Actions(driver);
+						act.moveToElement(AnnotatedPath,i,j).click().build().perform();
+						act.moveToElement(AnnotatedPath,i,j-1).click().build().perform();
+					}
+					
+					
+					
+					System.out.println("Annotation done");
+					//System.out.println("Sleep after annotation");
+				
 			}
 				//	act.moveToElement(AnnotatedPath,150,250).click().build().perform();
 					//act.moveToElement(AnnotatedPath,350,360).click().build().perform();
 					//act.moveToElement(AnnotatedPath,350,360).click().build().perform();
 				/*				
 				
-				for(int i=200,j=200;i>150 && j<250;i=i-5,j=j+5) {
-					Actions act = new Actions(driver);
-					act.moveToElement(AnnotatedPath,i,j).click().build().perform();	
-					act.moveToElement(AnnotatedPath,i-5,j).click().build().perform();	
-				}
+//				for(int i=200,j=200;i>150 && j<250;i=i-5,j=j+5) {
+//					Actions act = new Actions(driver);
+//					act.moveToElement(AnnotatedPath,i,j).click().build().perform();	
+//					act.moveToElement(AnnotatedPath,i-5,j).click().build().perform();	
+//				}
 				
 				for(int i=150,j=250;i>100 && j>200;i=i-5,j=j-5) {
 					Actions act = new Actions(driver);

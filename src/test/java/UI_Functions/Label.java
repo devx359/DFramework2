@@ -55,22 +55,23 @@ public class Label {
 		
 	}
 	
-	public boolean	isPresent(String strxpath) throws IOException, InterruptedException
+	public boolean	isPresent(String strxpath) 
 	{
 		WebElement element = null;
 		boolean status = false;
 		try
 		{
-		
-			WebDriverWait wait = new WebDriverWait(driver, 60);
-			element=wait.until(ExpectedConditions.presenceOfElementLocated((By.xpath(strxpath))));
-			element.isDisplayed();
+			System.out.println("webdriver wait for "+strxpath);
+			WebDriverWait wait = new WebDriverWait(driver, 30);
+			element=wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(strxpath)));
+			//status=element.isDisplayed();
 			status=true;
 				
 		}
 		catch(Exception e)
 		{
-			System.out.println("Unable to gettext "+strxpath);
+			System.out.println("isPresent Failed for  "+strxpath+e);
+			e.printStackTrace();
 		}
 		return  status;
 		

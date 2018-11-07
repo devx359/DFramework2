@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="20" name="MyParalleSuite1" parallel="tests">
+  <test name="Test1">
+    <parameter name="environment" value="itest"/>
+    <parameter name="RowNum" value="1"/>
+    <classes>
+      <class name="Tasking_UI.Integration1"/>
+    </classes>
+  </test> <!-- Test1 -->
+</suite> <!-- MyParalleSuite1 -->

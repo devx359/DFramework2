@@ -18,8 +18,12 @@ public class DynamicTestNgJenkins {
 	public void createPhysicalTestNgxml() {
 		
 		
-		int numberOfTests=Integer.parseInt(System.getProperty("numberOfTests"));
-		int jobNumber=Integer.parseInt(System.getProperty("jobNumber"));
+		int numberOfTests;
+		int jobNumber;
+		numberOfTests=1;
+		jobNumber=1;
+		/*numberOfTests=Integer.parseInt(System.getProperty("numberOfTests"));
+		jobNumber=Integer.parseInt(System.getProperty("jobNumber"));*/
 		int startRow=(numberOfTests*(jobNumber-1))+1;
 		
 		
@@ -40,7 +44,7 @@ public class DynamicTestNgJenkins {
 
 			// Add Class under
 			List<XmlClass> myClasses = new ArrayList<XmlClass>();
-			myClasses.add(new XmlClass(uiTestCases.Grid.class));
+			myClasses.add(new XmlClass(Tasking_UI.Integration1.class));
 			myTest.setXmlClasses(myClasses);
 
 			// add tests to array list

@@ -70,8 +70,8 @@ public class Link {
 			
 			WebDriverWait wait = new WebDriverWait(driver, 30);
 			WebElement elementToClick=wait.until(ExpectedConditions.visibilityOfElementLocated(LinkLocator));
-			System.out.println(strxpath+elementToClick.isDisplayed());
-			System.out.println(strxpath+elementToClick.isEnabled());
+			//System.out.println(strxpath+elementToClick.isDisplayed());
+			//System.out.println(strxpath+elementToClick.isEnabled());
 		
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", elementToClick);
@@ -132,7 +132,7 @@ public class Link {
 			String strXpath2 = ORFile.getlocator(strxpaths2).trim();
 			String locatorValue2 = strXpath2.split(";")[1];
 			String strxpath = locatorValue + dynamicdata + locatorValue2;
-			System.out.println(strxpath);
+			//System.out.println(strxpath);
 			
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath(strxpath))).click();
 			/*WebElement elementToClick = driver.findElement(By.xpath(strxpath));
