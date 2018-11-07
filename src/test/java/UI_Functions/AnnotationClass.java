@@ -46,7 +46,7 @@ public class AnnotationClass {
 					act.moveToElement(AnnotatedPath,x+100, y+180).click().build().perform();*/
 					
 					for(int i=150;i<200;i=i+5) {
-					//	Actions act = new Actions(driver);
+					
 						act.moveToElement(AnnotatedPath,i,i).click().build().perform();
 						act.moveToElement(AnnotatedPath,i+1,i).click().build().perform();
 						
@@ -54,23 +54,66 @@ public class AnnotationClass {
 					
 					
 					for(int i=200,j=200;i>150 && j<250;i=i-5,j=j+5) {
-					//	Actions act = new Actions(driver);
+					
 						act.moveToElement(AnnotatedPath,i,j).click().build().perform();	
 						act.moveToElement(AnnotatedPath,i-5,j).click().build().perform();	
 					}
 					
 					for(int i=150,j=250;i>100 && j>200;i=i-5,j=j-5) {
-					//	Actions act = new Actions(driver);
+					
 						act.moveToElement(AnnotatedPath,i,j).click().build().perform();
 						act.moveToElement(AnnotatedPath,i-1,j).click().build().perform();
 					}
 					
 					for(int i=100,j=200;i<150 && j>150;i=i+5,j=j-5) {
-					//	Actions act = new Actions(driver);
+					
 						act.moveToElement(AnnotatedPath,i,j).click().build().perform();
 						act.moveToElement(AnnotatedPath,i,j-1).click().build().perform();
 					}
 					
+	/*				
+					Actions act1 ;
+					for(int i=150;i<200;i=i+5) {
+	
+							act1 = act.moveToElement(AnnotatedPath,i,i).click()
+							.moveToElement(AnnotatedPath,i+1,i).click();
+							if(i==199)
+							{
+								act1.build().perform();
+							}
+							
+						}
+						
+						
+						
+						for(int i=200,j=200;i>150 && j<250;i=i-5,j=j+5) {
+						
+							act1 =act.moveToElement(AnnotatedPath,i,j).click()
+							.moveToElement(AnnotatedPath,i-5,j).click();
+							if(j==249)
+							{
+								act1.build().perform();
+							}
+						}
+						
+						for(int i=150,j=250;i>100 && j>200;i=i-5,j=j-5) {
+							act1 =act.moveToElement(AnnotatedPath,i,j).click()
+									.moveToElement(AnnotatedPath,i-1,j).click();
+							if(j==201)
+							{
+								act1.build().perform();
+							}
+						}
+						
+						for(int i=100,j=200;i<150 && j>150;i=i+5,j=j-5) {
+							act1 = 	act.moveToElement(AnnotatedPath,i,j).click().
+							moveToElement(AnnotatedPath,i,j-1).click();
+							if(i==149)
+							{
+								act1.build().perform();
+							}
+						}*/
+						
 					
 					
 					System.out.println("Annotation done");

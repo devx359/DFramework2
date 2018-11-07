@@ -1,11 +1,13 @@
 package Tasking_UI;
 
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.sikuli.script.Match;
@@ -67,8 +69,8 @@ public class Integration1 {
 	public void setup(ITestContext context) {
 		path = new PathUtility(context);
 		scrn = new Screen();// Sikuli Obj
-		ExtentManagerObj = new ExtentManager();
-		reports = ExtentManagerObj.GetExtent(this.getClass().getSimpleName().toString());
+		/*ExtentManagerObj = new ExtentManager();
+		reports = ExtentManagerObj.GetExtent(this.getClass().getSimpleName().toString());*/
 		DrvUtil = new DriverUtil();
 		driver = DrvUtil.DriverSetup("chrome");
 		ngDriver = DrvUtil.getngDriver();
@@ -103,7 +105,7 @@ public class Integration1 {
 			jobName = excelUtil.getExcelStringData(Integer.parseInt(row), 10, "job");
 			testCaseNo = excelUtil.getExcelStringData(Integer.parseInt(row), 2, "job");
 			
-			test = reports.createTest(testCaseNo);
+		//	test = reports.createTest(testCaseNo);
 			context.setAttribute("testobj", test);
 
 			// ******************GRID SETUP**********************
@@ -118,7 +120,7 @@ public class Integration1 {
 			driver.manage().deleteAllCookies();
 			driver.manage().window().maximize();
 			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-
+	
 			// ******************TEST STRATS************************
 
 			driver.navigate().to("https://itest.imerit.net/");
@@ -144,9 +146,10 @@ public class Integration1 {
 	public void TC_2(ITestContext context) {
 		int nooftask;
 		try {
-			nooftask=Integer.parseInt(System.getProperty("tasks")); //How many tasks to do ?
-			//nooftask = 3;
+			nooftask=Integer.parseInt(System.getProperty("tasks")); //How many tasks to do ?		
 			numberOfFrames=Integer.parseInt(System.getProperty("numberOfFrames"));//How many frames this task has ?
+			/*nooftask = 3;
+			numberOfFrames=10;*/
 			int j = 0;
 
 			link.Click("hambugMenu");
@@ -177,27 +180,27 @@ public class Integration1 {
 				p.click();
 
 				for (int i = 1; i <= numberOfFrames; i++) {
-					System.out.println("image webdriver wait..");
+					System.out.println("image webdriver wait.."+" : "+username);
 					WebDriverWait waits2 = new WebDriverWait(driver, 30);
 					WebElement annotations2 = waits2.until(ExpectedConditions.visibilityOfElementLocated(
 							By.xpath("//*[name()='svg']//*[name()='image'][@style='display: block;']")));
 
 					annotation.annotation_poly_rndm(annotations2);
 					keyboardfunct.keyPressed("annotatedLoc", "E");
-					System.out.println("Sleep after pressing E..");
+					System.out.println("Sleep after pressing E.."+" : "+username);
 					Thread.sleep(3000);
 					if(i!=10)
 					{
 					link.JSClick("Tool_nextButton");
 					System.out.println("Submitted task for frame: " + i);
-					test.info("Submitted task for frame: " + i);
+					test.info("Submitted task for frame: " + i+" : "+username);
 					System.out.println("Sleep after next button..");
 					Thread.sleep(10000);
 					}
 										
 					
 				}
-				System.out.println("Sleeping 10 sec before final submit ..");
+				System.out.println("Sleeping 10 sec before final submit .."+" : "+username);
 				Thread.sleep(10000);
 				link.JSClick("tool_submit");
 				
@@ -211,12 +214,12 @@ public class Integration1 {
 					Thread.sleep(5000);
 					link.JSClick("tool_submit");					
 				}
-				System.out.println("**Final submit*** ");
+				System.out.println("**Final submit*** "+" : "+username);
 				
 				
 			}
-			System.out.println("Successfully completed task");
-			test.pass("Successfully completed task");
+			System.out.println("Successfully completed task" +" : "+username);
+			test.pass("Successfully completed task"+" : "+username);
 
 		} catch (Exception e) {
 
