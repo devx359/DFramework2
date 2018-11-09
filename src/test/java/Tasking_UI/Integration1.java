@@ -163,6 +163,7 @@ public class Integration1 {
 			 */
 			nooftask = Integer.parseInt(noOfTasks);
 			numberOfFrames = Integer.parseInt(framecount);
+			
 
 			int j = 0;
 
@@ -197,9 +198,19 @@ public class Integration1 {
 				 * Pattern running = new Pattern("./image/poly2"); Match p = scrn.wait(running,
 				 * 30); p.click();
 				 */
+				/*String node_task_id=label.xPathGetText("node_task_id");
+				System.out.println("node_task_id : "+node_task_id+" : "+ username + " : " + jobName);*/
+				
+				String frame=label.xPathGetText("frame_no");//.substring(1, 1);
+				System.out.println(frame);
+				System.out.println("Frame: "+frame.charAt(0));
+				
+				 int frm = Character.getNumericValue(frame.charAt(0));
+				
+				
 				link.Click("button_polygon");
 				// *************psubmit starts******************
-				for (int i = 1; i <= numberOfFrames; i++) {
+				for (int i = frm; i <= numberOfFrames; i++) {
 					System.out.println("image webdriver wait.." + " : " + username);
 					WebDriverWait waits2 = new WebDriverWait(driver, 30);
 					WebElement annotations2 = waits2.until(ExpectedConditions.visibilityOfElementLocated(

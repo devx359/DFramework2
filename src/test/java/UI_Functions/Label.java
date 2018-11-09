@@ -37,19 +37,19 @@ public class Label {
 		
 	}
 	
-	public String	xPathGetText(String strxpath,WebDriver driver) throws IOException, InterruptedException
+	public String	xPathGetText(String strxpath) throws IOException, InterruptedException
 	{
 		String strData = null;
 		try
 		{
-		
-			WebDriverWait wait = new WebDriverWait(driver, 60);
-			strData=wait.until(ExpectedConditions.presenceOfElementLocated((By.xpath(strxpath)))).getText();
+			By textboxLocator=Locator.getWebElement(strxpath);
+			WebDriverWait wait = new WebDriverWait(driver, 20);
+			strData=wait.until(ExpectedConditions.presenceOfElementLocated((textboxLocator))).getText();
 				
 		}
 		catch(Exception e)
 		{
-			System.out.println("Unable to gettext "+strxpath);
+			System.out.println("Unable to gettext "+strxpath+e);
 		}
 		return  strData;
 		
