@@ -113,7 +113,7 @@ public class Integration1 {
 			// Fetch Excel data sheet Row Number from testng xml parameters
 			String row = context.getCurrentXmlTest().getParameter("RowNum");
 			username = excelUtil.getExcelStringData(Integer.parseInt(row), 0, "job");
-			jobcode= excelUtil.getExcelStringData(Integer.parseInt(row), 2, "job");
+			jobcode= excelUtil.getExcelStringData(Integer.parseInt(row), 3, "job");
 			project = excelUtil.getExcelStringData(Integer.parseInt(row), 7, "job");
 			flowName = excelUtil.getExcelStringData(Integer.parseInt(row), 9, "job");
 			jobName = excelUtil.getExcelStringData(Integer.parseInt(row), 10, "job");
@@ -130,7 +130,7 @@ public class Integration1 {
 
 			driver.manage().deleteAllCookies();
 			driver.manage().window().maximize();
-			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+			driver.manage().timeouts().pageLoadTimeout(90, TimeUnit.SECONDS);
 
 			// ******************TEST STRATS************************
 
@@ -144,6 +144,7 @@ public class Integration1 {
 			button.Click("login_button");
 
 			System.out.println("Logged in to IMPP : " + username);
+			Thread.sleep(20000);
 
 		} catch (Exception e) {
 
