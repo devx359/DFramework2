@@ -37,7 +37,7 @@ public class Button {
 		try {
 			ngDriver.waitForAngularRequestsToFinish();
 			By buttonLocator = Locator.getWebElement(strxpath);
-			WebDriverWait wait = new WebDriverWait(driver, 20);
+			WebDriverWait wait = new WebDriverWait(driver, 80);
 			wait.until(ExpectedConditions.elementToBeClickable(buttonLocator)).click();
 
 		} catch (Exception e) {

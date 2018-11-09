@@ -33,7 +33,7 @@ public class DropDown
 		try
 		{
 			By SelectLocator=Locator.getWebElement(strxpath);
-			WebDriverWait wait = new WebDriverWait(driver, 50);
+			WebDriverWait wait = new WebDriverWait(driver, 90);
 		    Select Listvalue=new Select(wait.until(ExpectedConditions.presenceOfElementLocated(SelectLocator)));
 			Listvalue.selectByVisibleText(dropDownText);
 		}

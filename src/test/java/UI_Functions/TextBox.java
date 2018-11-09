@@ -36,7 +36,7 @@ public class TextBox {
 			
 
 			By textboxLocator = Locator.getWebElement(strxpath);
-			WebDriverWait wait = new WebDriverWait(driver, 40);
+			WebDriverWait wait = new WebDriverWait(driver, 80);
 			wait.until(ExpectedConditions.visibilityOfElementLocated(textboxLocator)).sendKeys(strData);
 		} catch (Exception e) {
 			e.printStackTrace();

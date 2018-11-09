@@ -170,11 +170,11 @@ public class Integration1 {
 			link.Click("hambugMenu");
 			link.Click("Contributor");
 			link.Click("work_tracker");
-			Thread.sleep(5000);
+			Thread.sleep(60000);
 			link.XpathDataClick("itest_project", project);
-			Thread.sleep(5000);
+			Thread.sleep(60000);
 			link.XpathDataClick("itest_flow", flowName);
-			Thread.sleep(5000);
+			Thread.sleep(60000);
 			dropdown.SelectValue("itest_job", jobName);
 			System.out.println(nodetype);
 			if (nodetype.equals("op")) {

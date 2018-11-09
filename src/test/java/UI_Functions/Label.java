@@ -43,7 +43,7 @@ public class Label {
 		try
 		{
 			By textboxLocator=Locator.getWebElement(strxpath);
-			WebDriverWait wait = new WebDriverWait(driver, 20);
+			WebDriverWait wait = new WebDriverWait(driver, 90);
 			strData=wait.until(ExpectedConditions.presenceOfElementLocated((textboxLocator))).getText();
 				
 		}
