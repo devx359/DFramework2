@@ -69,6 +69,7 @@ public class Integration1 {
 	int numberOfFrames;
 	String noOfTasks;
 	String nodetype;
+	String jobcode;
 
 	@BeforeTest
 	public void setup(ITestContext context) throws MalformedURLException {
@@ -112,6 +113,7 @@ public class Integration1 {
 			// Fetch Excel data sheet Row Number from testng xml parameters
 			String row = context.getCurrentXmlTest().getParameter("RowNum");
 			username = excelUtil.getExcelStringData(Integer.parseInt(row), 0, "job");
+			jobcode= excelUtil.getExcelStringData(Integer.parseInt(row), 2, "job");
 			project = excelUtil.getExcelStringData(Integer.parseInt(row), 7, "job");
 			flowName = excelUtil.getExcelStringData(Integer.parseInt(row), 9, "job");
 			jobName = excelUtil.getExcelStringData(Integer.parseInt(row), 10, "job");
@@ -167,7 +169,7 @@ public class Integration1 {
 
 			int j = 0;
 
-			link.Click("hambugMenu");
+			/*link.Click("hambugMenu");
 			link.Click("Contributor");
 			link.Click("work_tracker");
 			Thread.sleep(60000);
@@ -182,7 +184,9 @@ public class Integration1 {
 			} else {
 				link.Click("qc_start");
 			}
-			Thread.sleep(2000);
+			Thread.sleep(2000);*/
+			driver.get("https://itest.imerit.net/dashboard.html#/task/"+jobcode+"/"+nodetype);
+			Thread.sleep(15000);
 
 			// ************Tasking starts*********************
 
@@ -191,7 +195,7 @@ public class Integration1 {
 			for (int k = 1; k <= nooftask; k++) {
 
 				System.out.println("*********Task " + k + " starts****** for " + username + " : " + jobName);
-				WebDriverWait waits = new WebDriverWait(driver, 40);
+				WebDriverWait waits = new WebDriverWait(driver, 100);
 				waits.until(ExpectedConditions.visibilityOfElementLocated(
 						By.xpath("//*[name()='svg']//*[name()='image'][@style='display: block;']")));
 				/*
@@ -212,7 +216,7 @@ public class Integration1 {
 				// *************psubmit starts******************
 				for (int i = frm; i <= numberOfFrames; i++) {
 					System.out.println("image webdriver wait.." + " : " + username);
-					WebDriverWait waits2 = new WebDriverWait(driver, 30);
+					WebDriverWait waits2 = new WebDriverWait(driver, 100);
 					WebElement annotations2 = waits2.until(ExpectedConditions.visibilityOfElementLocated(
 							By.xpath("//*[name()='svg']//*[name()='image'][@style='display: block;']")));
 					for (int m = 0; m < 100; m = m + 20) {
