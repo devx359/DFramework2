@@ -216,37 +216,37 @@ public class Integration1 {
 				link.Click("button_polygon");
 				// *************psubmit starts******************
 				for (int i = frm; i <= numberOfFrames; i++) {
-					System.out.println("image webdriver wait.." + " : " + username);
+					//System.out.println("image webdriver wait.." + " : " + username);
 					WebDriverWait waits2 = new WebDriverWait(driver, 100);
 					WebElement annotations2 = waits2.until(ExpectedConditions.visibilityOfElementLocated(
 							By.xpath("//*[name()='svg']//*[name()='image'][@style='display: block;']")));
-					for (int m = 0; m < 100; m = m + 20) {
-						System.out.println("Sleep before annotation" + " : " + username);
+					for (int m = 0; m < 80; m = m + 20) {
+						//System.out.println("Sleep before annotation" + " : " + username);
 						annotation.annotation_poly_rndm(annotations2, m);
 						keyboardfunct.keyPressed("annotatedLoc", "E");
-						System.out.println("--Annotation done" + " : " + username);
+					//	System.out.println("--Annotation done" + " : " + username);
 					}
-					System.out.println("Sleep 2sec after pressing E" + " : " + username);
+					//System.out.println("Sleep 2sec after pressing E" + " : " + username);
 					Thread.sleep(2000);
 					if ((i != 10) && (numberOfFrames != 1)) {
 						link.JSClick("Tool_nextButton");
 						System.out.println("Submitted task for frame: " + i + " : " + username);
 						// test.info("Submitted task for frame: " + i+" : "+username);
-						System.out.println("Sleep after next button.." + " : " + username);
+					//	System.out.println("Sleep after next button.." + " : " + username);
 						Thread.sleep(6000);
 					}
 
 				}
 				// **************final submit********************
-				System.out.println("Sleeping 10 sec before final submit .." + " : " + username);
+				//System.out.println("Sleeping 10 sec before final submit .." + " : " + username);
 				Thread.sleep(10000);
 				link.JSClick("tool_submit");
 				Thread.sleep(2000);
 				if (numberOfFrames > 1) {
 					while (link.isPresent("proj_constraint_alert") == true) {
-						System.out.println("Found proj constraint alrt before final submit " + " : " + username);
+						//System.out.println("Found proj constraint alrt before final submit " + " : " + username);
 						link.ClickonPresent("button_proj_constraint_alert_OK");
-						System.out.println("proj constraint clicked OK and sleep .. " + " : " + username);
+						//System.out.println("proj constraint clicked OK and sleep .. " + " : " + username);
 						Thread.sleep(5000);
 						link.JSClick("tool_submit");
 						Thread.sleep(5000);
