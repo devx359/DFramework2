@@ -208,7 +208,7 @@ public class Integration1 {
 				
 				String frame=label.xPathGetText("frame_no");//.substring(1, 1);
 				System.out.println(frame);
-				System.out.println("Frame: "+frame.charAt(0));
+				//System.out.println("Frame: "+frame.charAt(0));
 				
 				 int frm = Character.getNumericValue(frame.charAt(0));
 				
@@ -230,7 +230,7 @@ public class Integration1 {
 					Thread.sleep(2000);
 					if ((i != 10) && (numberOfFrames != 1)) {
 						link.JSClick("Tool_nextButton");
-						System.out.println("Submitted task for frame: " + i + " : " + username);
+						//System.out.println("Submitted task for frame: " + i + " : " + username);
 						// test.info("Submitted task for frame: " + i+" : "+username);
 					//	System.out.println("Sleep after next button.." + " : " + username);
 						Thread.sleep(6000);
@@ -264,7 +264,7 @@ public class Integration1 {
 				 * Pattern("./image/submit_sync_ok.png"); Match p3 = scrn.wait(syncok, 5);
 				 * p3.click(); Thread.sleep(5000); link.JSClick("tool_submit"); }
 				 */
-				System.out.println("===========Final submit===========" + " : " + username);
+				System.out.println("===========Final submit===========" + " : " + username+" : "+jobName+"--Task--" + k);
 				Thread.sleep(10000);
 			}
 			System.out.println("Successfully completed task" + " : " + username);

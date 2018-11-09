@@ -90,7 +90,7 @@ public class Link {
 		
 			JavascriptExecutor executor = (JavascriptExecutor) driver;
 			executor.executeScript("arguments[0].click();", elementToClick);
-			System.out.println("Clicked on "+strxpath);
+			//System.out.println("Clicked on "+strxpath);
 	
 		} catch (Exception e) {
 			System.out.println("Unable to click on link " + strxpath +e);
