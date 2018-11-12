@@ -70,6 +70,8 @@ public class Integration1 {
 	String noOfTasks;
 	String nodetype;
 	String jobcode;
+	String noofAnn;
+	String sleep;
 
 	@BeforeTest
 	public void setup(ITestContext context) throws MalformedURLException {
@@ -121,6 +123,9 @@ public class Integration1 {
 			framecount = excelUtil.getExcelStringData(Integer.parseInt(row), 12, "job");
 			noOfTasks = excelUtil.getExcelStringData(Integer.parseInt(row), 13, "job");
 			nodetype = excelUtil.getExcelStringData(Integer.parseInt(row), 14, "job");
+			noofAnn=excelUtil.getExcelStringData(Integer.parseInt(row), 16, "job");
+			sleep = excelUtil.getExcelStringData(Integer.parseInt(row), 15, "job");
+
 			// test = reports.createTest(testCaseNo);
 			context.setAttribute("testobj", test);
 
@@ -134,8 +139,8 @@ public class Integration1 {
 
 			// ******************TEST STRATS************************
 
-			driver.navigate().to("https://itest.imerit.net/");
-			System.out.println("https://itest.imerit.net Page opened for " + username + " with Thread Id:- "
+			driver.navigate().to("https://chakra.imerit.net/");
+			System.out.println("https://chakra.imerit.net Page opened for " + username + " with Thread Id:- "
 					+ Thread.currentThread().getId());
 
 			Thread.sleep(3000);
@@ -186,7 +191,7 @@ public class Integration1 {
 				link.Click("qc_start");
 			}
 			Thread.sleep(2000);*/
-			driver.get("https://itest.imerit.net/dashboard.html#/task/"+jobcode+"/"+nodetype);
+			driver.get("https://chakra.imerit.net/dashboard.html#/task/"+jobcode+"/"+nodetype);
 			Thread.sleep(15000);
 
 			// ************Tasking starts*********************
@@ -220,14 +225,19 @@ public class Integration1 {
 					WebDriverWait waits2 = new WebDriverWait(driver, 100);
 					WebElement annotations2 = waits2.until(ExpectedConditions.visibilityOfElementLocated(
 							By.xpath("//*[name()='svg']//*[name()='image'][@style='display: block;']")));
-					for (int m = 0; m < 80; m = m + 20) {
+					for (int m = 1; m <= Integer.parseInt(noofAnn); m++) {
 						//System.out.println("Sleep before annotation" + " : " + username);
-						annotation.annotation_poly_rndm(annotations2, m);
+						annotation.annotation_poly_rndm(annotations2, (m*20));
 						keyboardfunct.keyPressed("annotatedLoc", "E");
 					//	System.out.println("--Annotation done" + " : " + username);
+						dropdown.SelectValue("AGdropdown", "Standing crop");
+						button.Click("AGdropdownSubmit");
 					}
 					//System.out.println("Sleep 2sec after pressing E" + " : " + username);
 					Thread.sleep(2000);
+					dropdown.SelectValue("uniqenessdropdown", "--Select Uniqueness--");
+					Thread.sleep(1000);
+					dropdown.SelectValue("uniqenessdropdown", "Yes");
 					if ((i != 10) && (numberOfFrames != 1)) {
 						link.JSClick("Tool_nextButton");
 						//System.out.println("Submitted task for frame: " + i + " : " + username);
@@ -266,6 +276,7 @@ public class Integration1 {
 				 */
 				System.out.println("===========Final submit===========" + " : " + username+" : "+jobName+"--Task--" + k);
 				Thread.sleep(10000);
+				Thread.sleep(Integer.parseInt(sleep));
 			}
 			System.out.println("Successfully completed task" + " : " + username);
 			// test.pass("Successfully completed task"+" : "+username);

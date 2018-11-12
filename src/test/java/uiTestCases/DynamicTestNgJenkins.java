@@ -21,10 +21,10 @@ public class DynamicTestNgJenkins {
 		int numberOfTests; //how many parallel tests you want to run
 		int jobNumber;	//job serial number
 		int numberOfFrames;
-		/*numberOfTests=1;
-		jobNumber=1;*/
-		numberOfTests=Integer.parseInt(System.getProperty("numberOfTests"));
-		jobNumber=Integer.parseInt(System.getProperty("jobNumber"));
+		numberOfTests=1;
+		jobNumber=1;
+		//numberOfTests=Integer.parseInt(System.getProperty("numberOfTests"));
+		//jobNumber=Integer.parseInt(System.getProperty("jobNumber"));
 		int startRow=(numberOfTests*(jobNumber-1))+1;
 		
 		
