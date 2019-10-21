@@ -1,4 +1,4 @@
-** grid hub
+2** grid hub
 java -jar D:\selenium_jars\selenium-server-standalone-3.9.1.jar -role hub
 
 *by default hub use port 4444 .For custom port
